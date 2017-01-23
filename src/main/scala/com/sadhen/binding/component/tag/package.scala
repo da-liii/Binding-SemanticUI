@@ -8,12 +8,12 @@ import com.thoughtworks.binding.dom
   * Created by rendong on 17/1/23.
   */
 package object tag {
-  // navigation
+  // Navigation
   implicit final class Pagination(x: dom.Runtime.TagsAndTags2.type) {
     def Pagination = PaginationBuilder()
   }
 
-  // dataentry
+  // Data Entry
   implicit final class AutoComplete(x: dom.Runtime.TagsAndTags2.type) {
     def AutoComplete = AutoCompleteBuilder()
   }
