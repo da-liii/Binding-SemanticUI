@@ -1,6 +1,6 @@
 package com.sadhen.binding
 
-import com.sadhen.binding.component.impl.ComponentBuilder
+import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
 
 import scala.language.implicitConversions

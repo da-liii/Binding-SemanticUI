@@ -1,4 +1,4 @@
-package com.sadhen.binding.component.impl
+package com.sadhen.binding.component
 
 import com.thoughtworks.binding.Binding
 import org.scalajs.dom.raw.Node

@@ -1,5 +1,6 @@
-package com.sadhen.binding.component.impl
+package com.sadhen.binding.component.navigation
 
+import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.Binding.Var
 import com.thoughtworks.binding.dom
 import org.scalajs.dom.raw.Event
@@ -15,7 +16,7 @@ case class PaginationBuilder() extends ComponentBuilder {
   def render = this
 
   @dom
-  def build = {
+  override def build = {
     <div>
       <button
         class="ui small basic icon button"
