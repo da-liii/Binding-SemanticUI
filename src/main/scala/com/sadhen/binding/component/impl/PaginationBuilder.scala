@@ -1,21 +1,45 @@
 package com.sadhen.binding.component.impl
 
-import com.thoughtworks.binding.{Binding, dom}
+import com.thoughtworks.binding.Binding.Var
+import com.thoughtworks.binding.dom
+import org.scalajs.dom.raw.Event
 
 /**
   * Created by rendong on 17/1/23.
   */
 case class PaginationBuilder() extends ComponentBuilder {
-  var defaultCurrent: Binding[Int] = _
-  var total: Binding[Int] = _
-  var simple: Binding[Boolean] = Binding(false)
+  var defaultCurrent: Var[Int] = Var(1)
+  var total: Var[Int] = Var(1)
+  var simple: Var[Boolean] = Var(false)
 
   def render = this
 
   @dom
   def build = {
     <div>
-      <h1>{ if (simple.bind) "Simple" else "Complicated" }</h1>
+      <button
+        class="ui small basic icon button"
+        style="box-shadow:0px 0px 0px 0px"
+        onclick={ event: Event =>
+          defaultCurrent := (if (defaultCurrent.get <= 1) defaultCurrent.get else defaultCurrent.get - 1)
+        }>
+        <i class="left chevron icon"></i>
+      </button>
+      <div class="ui small input" style="padding: 5px 0px 5px 0px;width: 26px;">
+        <input type="text"
+               value={ defaultCurrent.bind.toString }
+               style="padding: 0px 0px 0px 0px; text-align: center;"/>
+      </div>
+      <span>/</span>
+      <span>{ total.bind.toString }</span>
+      <button
+        class="ui small basic icon button"
+        style="box-shadow:0px 0px 0px 0px"
+        onclick={ event: Event =>
+          defaultCurrent := (if (defaultCurrent.get >= total.get) defaultCurrent.get else defaultCurrent.get + 1)
+        }>
+        <i class="right chevron icon"></i>
+      </button>
     </div>
   }
 }
