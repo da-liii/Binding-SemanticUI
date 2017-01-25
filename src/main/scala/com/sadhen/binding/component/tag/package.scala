@@ -1,5 +1,6 @@
 package com.sadhen.binding.component
 
+import com.sadhen.binding.component.datadisplay.TableBuilder
 import com.sadhen.binding.component.dataentry.{AutoCompleteBuilder, InputNumberBuilder}
 import com.sadhen.binding.component.navigation.PaginationBuilder
 import com.thoughtworks.binding.dom
@@ -20,5 +21,10 @@ package object tag {
 
   implicit final class InputNumber(x: dom.Runtime.TagsAndTags2.type) {
     def InputNumber = InputNumberBuilder()
+  }
+
+  // Data Display
+  implicit final class Table(x: dom.Runtime.TagsAndTags2.type) {
+    def Table = TableBuilder()
   }
 }
