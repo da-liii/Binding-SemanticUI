@@ -12,7 +12,8 @@ lazy val librarySettings = Seq(
   name := "semantic-ui",
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
-    "com.thoughtworks.binding" %%% "dom" % "10.0.2"
+    "com.thoughtworks.binding" %%% "dom" % "10.0.2",
+    "com.chuusai" %%% "shapeless" % "2.3.2"
   )
 )
 
