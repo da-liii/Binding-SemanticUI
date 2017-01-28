@@ -15,8 +15,8 @@ trait Column {
   val dataIndex: String
   val key: String
   @dom
-  def render(data: js.Dynamic): Binding[Node] =
-    <td>{ data.selectDynamic(dataIndex).toString }</td>
+  def render(record: js.Dynamic): Binding[Node] =
+    <td>{ record.selectDynamic(dataIndex).toString }</td>
 }
 
 case class TableBuilder() extends ComponentBuilder {
@@ -34,9 +34,9 @@ case class TableBuilder() extends ComponentBuilder {
         </tr>
       </thead>
       <tbody>
-        { for (data <- Vars(dataSource.bind: _*)) yield
+        { for (record <- Vars(dataSource.bind: _*)) yield
           <tr>
-            { for (column <- Vars(columns.bind: _*)) yield column.render(data).bind }
+            { for (column <- Vars(columns.bind: _*)) yield column.render(record).bind }
           </tr>
         }
       </tbody>
