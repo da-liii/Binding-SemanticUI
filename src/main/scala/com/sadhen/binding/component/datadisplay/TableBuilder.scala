@@ -16,7 +16,6 @@ import scala.scalajs.js
 trait Column {
   val title: String
   val dataIndex: String
-  val key: String
   @dom
   def render(record: js.Dynamic): Binding[Node] =
     <td>{ record.selectDynamic(dataIndex).toString }</td>
