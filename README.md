@@ -36,9 +36,9 @@ object ExamplePage extends js.JSApp {
     js.Dynamic.literal(title = "World", age=24)
   )
 
-  // define the Columns
-  // by default, it shows the data according to dataIndex
-  // however, you override the render method for customization
+  // Define the Columns
+  // By default, it shows the data according to dataIndex
+  // However, you may override the render method for customization
   val columns: Array[Column] = Array(
     new Column {
       val title = "Title"
