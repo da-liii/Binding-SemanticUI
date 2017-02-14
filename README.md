@@ -58,7 +58,7 @@ object ExamplePage extends js.JSApp {
   def render = {
     // Simply assign the dataSource and columns, you would get a Table with
     // the simplest Pagination
-    <Table dataSource={ dataSource } columns={ columns }></Table>
+    <div><Table dataSource={ dataSource } columns={ columns }></Table></div>
   }
 
   override def main() = {
