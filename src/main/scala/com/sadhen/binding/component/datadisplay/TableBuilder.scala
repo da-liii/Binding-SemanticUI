@@ -1,11 +1,9 @@
 package com.sadhen.binding.component.datadisplay
 
 import com.sadhen.binding.component._
-import com.sadhen.binding.component.tag.Pagination
-
 import com.thoughtworks.binding.Binding.{Var, Vars}
 import com.thoughtworks.binding.{Binding, dom}
-import org.scalajs.dom.raw.Node
+import org.scalajs.dom.raw.{Event, Node}
 
 import scala.scalajs.js
 
@@ -30,17 +28,16 @@ case class TableBuilder() extends ComponentBuilder {
   @dom
   override def build = {
     val pageSize = 10
-    val currentPage = Var(1)
-    val total = Var((dataSource.get.size - 1)/pageSize + 1)
+    val defaultCurrent = Var(1)
 
-    <table class="ui table">
+    <table class="ui celled table">
       <thead>
         <tr>
         { for (column <- Vars(columns.bind: _*)) yield <th>{ column.title }</th>}
         </tr>
       </thead>
       <tbody>
-        { for (record <- Vars(dataSource.bind.slice(pageSize*(currentPage.bind-1), pageSize*currentPage.bind): _*)) yield
+        { for (record <- Vars(dataSource.bind.slice(pageSize*(defaultCurrent.bind-1), pageSize*defaultCurrent.bind): _*)) yield
           <tr>
             { for (column <- Vars(columns.bind: _*)) yield column.render(record).bind }
           </tr>
@@ -50,10 +47,31 @@ case class TableBuilder() extends ComponentBuilder {
         <tr>
           <th colSpan={ columns.bind.size }>
             <div class="ui right floated pagination menu">
-              <Pagination simple={ true }
-                          defaultCurrent={ currentPage }
-                          total={ total }
-              ></Pagination>
+              <div>
+                <button class="ui small basic icon button"
+                        style="box-shadow:0px 0px 0px 0px"
+                        onclick={ event: Event =>
+                          defaultCurrent := (if (defaultCurrent.get <= 1) defaultCurrent.get else defaultCurrent.get - 1)
+                        }
+                >
+                  <i class="left chevron icon"></i>
+                </button>
+                <div class="ui small input" style="padding: 5px 0px 5px 0px;width: 26px;">
+                  <input type="text"
+                         value={ defaultCurrent.bind.toString }
+                         style="padding: 0px 0px 0px 0px; text-align: center;"/>
+                </div>
+                <span>/</span>
+                <span>{ s"${(dataSource.bind.size - 1)/pageSize + 1}" }</span>
+                <button class="ui small basic icon button"
+                        style="box-shadow:0px 0px 0px 0px"
+                        onclick={ event: Event =>
+                          defaultCurrent := (if (defaultCurrent.get >= (dataSource.get.size - 1)/pageSize + 1) defaultCurrent.get else defaultCurrent.get + 1)
+                        }
+                >
+                  <i class="right chevron icon"></i>
+                </button>
+              </div>
             </div>
           </th>
         </tr>

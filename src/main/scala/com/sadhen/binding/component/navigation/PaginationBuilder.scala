@@ -32,7 +32,7 @@ case class PaginationBuilder() extends ComponentBuilder {
                style="padding: 0px 0px 0px 0px; text-align: center;"/>
       </div>
       <span>/</span>
-      <span>{ total.bind.toString }</span>
+      <span>{ s"${total.bind}" }</span>
       <button
         class="ui small basic icon button"
         style="box-shadow:0px 0px 0px 0px"

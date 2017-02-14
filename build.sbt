@@ -2,7 +2,7 @@ import sbt.Keys._
 
 lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
-  version := "0.0.1",
+  version := "0.0.2-SNAPSHOT",
   scalaVersion := "2.11.8",
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
   publishMavenStyle := true,
