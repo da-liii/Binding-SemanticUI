@@ -58,6 +58,9 @@ lazy val doc = (project in file("doc"))
   .settings(
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
     skip in packageJSDependencies := false,
+    libraryDependencies ++= Seq(
+      "org.querki" %%% "jquery-facade" % "1.2"
+    ),
     jsDependencies ++= Seq(
       "org.webjars" % "jquery" % jQueryV / "jquery.js" minified "jquery.min.js",
       "org.webjars" % "Semantic-UI" % semanticV / "semantic.js" minified "semantic.min.js" dependsOn "jquery.js"

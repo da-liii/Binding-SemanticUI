@@ -11,6 +11,8 @@ case class IconBuilder() extends ComponentBuilder {
   var loading: Var[Boolean] = Var(false)
   var color: Var[String] = Var("")
 
+  val constAttr = "icon"
+
   def render = this
 
   def fDisabled(disabled: Boolean): String = {
@@ -31,7 +33,7 @@ case class IconBuilder() extends ComponentBuilder {
         `type`.bind,
         fLoading(loading.bind),
         fDisabled(disabled.bind),
-        "icon"
+        constAttr
       ).mkString(" ")
     }>
     </i>

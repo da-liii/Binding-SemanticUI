@@ -4,6 +4,7 @@ import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
 import com.thoughtworks.binding.Binding.Var
 
+import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
@@ -39,8 +40,17 @@ object Main {
     </div>
   }
 
+  @dom
+  def rating = {
+    <div>
+      <hr></hr>
+        <Rate count={1}></Rate>
+      <hr></hr>
+    </div>
+  }
+
   @JSExport
   def main(): Unit = {
-    dom.render(document.body, icon)
+    dom.render(document.body, rating)
   }
 }
