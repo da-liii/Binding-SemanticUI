@@ -1,4 +1,4 @@
-# Binding-SemanticUI [![Scala.js](http://scala-js.org/assets/badges/scalajs-0.6.13.svg)](http://scala-js.org)[![Latest](https://index.scala-lang.org/sadhen/binding-semanticui/semantic-ui/latest.svg)](https://index.scala-lang.org/sadhen/binding-semanticui)
+# Binding-SemanticUI [![Scala.js](http://scala-js.org/assets/badges/scalajs-0.6.26.svg)](http://scala-js.org)[![Latest](https://index.scala-lang.org/sadhen/binding-semanticui/semantic-ui/latest.svg)](https://index.scala-lang.org/sadhen/binding-semanticui)
 
 Available Components:
 
