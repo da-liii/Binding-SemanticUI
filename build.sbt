@@ -50,3 +50,14 @@ lazy val librarySettings = Seq(
 lazy val semantic = (project in file("semantic"))
   .settings(commonSettings, librarySettings)
   .enablePlugins(ScalaJSPlugin)
+
+lazy val doc = (project in file("doc"))
+  .settings(
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+    skip in packageJSDependencies := false,
+    jsDependencies ++= Seq(
+      "org.webjars" % "jquery" % "3.3.1" / "3.3.1/jquery.js" minified "3.3.1/jquery.min.js"
+    )
+  )
+  .dependsOn(semantic)
+  .enablePlugins(ScalaJSPlugin)
