@@ -3,6 +3,7 @@ package com.sadhen.binding.component
 import com.sadhen.binding.component.datadisplay.TableBuilder
 import com.sadhen.binding.component.dataentry.{AutoCompleteBuilder, InputNumberBuilder}
 import com.sadhen.binding.component.navigation.PaginationBuilder
+import com.sadhen.binding.component.general.IconBuilder
 import com.thoughtworks.binding.dom
 
 /**
@@ -26,5 +27,10 @@ package object tag {
   // Data Display
   implicit final class Table(x: dom.Runtime.TagsAndTags2.type) {
     def Table = TableBuilder()
+  }
+
+  // General
+  implicit final class Icon(x: dom.Runtime.TagsAndTags2.type) {
+    def Icon = IconBuilder()
   }
 }

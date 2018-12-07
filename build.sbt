@@ -1,5 +1,8 @@
 import sbt.Keys._
 
+lazy val jQueryV = "3.3.1"
+lazy val semanticV = "2.4.1"
+
 lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
   version := "0.0.2-SNAPSHOT",
@@ -56,7 +59,8 @@ lazy val doc = (project in file("doc"))
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
     skip in packageJSDependencies := false,
     jsDependencies ++= Seq(
-      "org.webjars" % "jquery" % "3.3.1" / "3.3.1/jquery.js" minified "3.3.1/jquery.min.js"
+      "org.webjars" % "jquery" % jQueryV / "jquery.js" minified "jquery.min.js",
+      "org.webjars" % "Semantic-UI" % semanticV / "semantic.js" minified "semantic.min.js" dependsOn "jquery.js"
     )
   )
   .dependsOn(semantic)
