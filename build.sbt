@@ -3,7 +3,7 @@ import sbt.Keys._
 lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
   version := "0.0.2-SNAPSHOT",
-  scalaVersion := "2.11.8",
+  scalaVersion := "2.12.8",
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
   publishMavenStyle := true,
   isSnapshot := version.value.endsWith("SNAPSHOT"),
@@ -42,11 +42,11 @@ lazy val commonSettings = Seq(
 lazy val librarySettings = Seq(
   name := "semantic-ui",
   libraryDependencies ++= Seq(
-    "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
-    "com.thoughtworks.binding" %%% "dom" % "10.0.2"
+    "io.udash" %%% "udash-jquery" % "3.0.0",
+    "com.thoughtworks.binding" %%% "dom" % "11.3.0"
   )
 )
 
-lazy val library = (project in file("."))
+lazy val semantic = (project in file("semantic"))
   .settings(commonSettings, librarySettings)
   .enablePlugins(ScalaJSPlugin)

@@ -3,8 +3,8 @@ package com.sadhen.binding.component.dataentry
 import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.Binding.{Var, Vars}
 import com.thoughtworks.binding.dom
-import org.scalajs.dom.html.Input
 import org.scalajs.dom.raw.Event
+import org.scalajs.dom.html._
 
 /**
   * Created by rendong on 17/1/23.
@@ -21,9 +21,10 @@ case class AutoCompleteBuilder() extends ComponentBuilder {
   override def build = {
     <div class="ui search">
       <div class="ui input">
-        <input type="text"
+        <input id="input"
+               type="text"
                oninput={ event: Event =>
-                 filter := dom.currentTarget[Input].value
+                 filter := `input`.value
                }
                placeholder={ placeholder.bind } />
       </div>

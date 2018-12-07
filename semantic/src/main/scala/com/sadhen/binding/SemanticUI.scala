@@ -1,8 +1,9 @@
 package com.sadhen.binding
 
+import io.udash.wrappers.jquery.JQuery
+
 import scala.language.implicitConversions
 import scala.scalajs.js
-import org.scalajs.jquery.JQuery
 
 /**
   * Created by rendong on 17/1/2.
