@@ -2,8 +2,9 @@ package com.sadhen.binding.component
 
 import com.sadhen.binding.component.datadisplay.TableBuilder
 import com.sadhen.binding.component.dataentry._
+import com.sadhen.binding.component.feedback.ProgressBuilder
 import com.sadhen.binding.component.navigation.PaginationBuilder
-import com.sadhen.binding.component.general.IconBuilder
+import com.sadhen.binding.component.general.{ButtonBuilder, IconBuilder}
 import com.thoughtworks.binding.dom
 
 /**
@@ -13,6 +14,10 @@ package object tag {
   // General
   implicit final class Icon(x: dom.Runtime.TagsAndTags2.type) {
     def Icon = IconBuilder()
+  }
+
+  implicit final class Button(x: dom.Runtime.TagsAndTags2.type) {
+    def Button = ButtonBuilder()
   }
 
   // Navigation
@@ -36,6 +41,11 @@ package object tag {
   // Data Display
   implicit final class Table(x: dom.Runtime.TagsAndTags2.type) {
     def Table = TableBuilder()
+  }
+
+  // Feedback
+  implicit final class Progress(x: dom.Runtime.TagsAndTags2.type) {
+    def Progress = ProgressBuilder()
   }
 
 }

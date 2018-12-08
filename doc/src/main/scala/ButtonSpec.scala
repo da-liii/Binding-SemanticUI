@@ -1,20 +1,17 @@
 import com.thoughtworks.binding.dom
 import org.scalajs.dom.document
-import com.sadhen.binding.component.tag._
-import com.sadhen.binding.component.autoVar
 
-import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+import com.sadhen.binding.component.tag._
 
-@JSExportTopLevel("RateSpec")
-object RateSpec {
+@JSExportTopLevel("ButtonSpec")
+object ButtonSpec {
+
   @dom
   def body = {
     <div>
       <hr></hr>
-      <Rate count={1}></Rate>
-      <hr></hr>
-      <Rate count={4} value={3} star={true}></Rate>
+      <Button></Button>
       <hr></hr>
     </div>
   }
@@ -23,4 +20,5 @@ object RateSpec {
   def main(): Unit = {
     dom.render(document.body, body)
   }
+
 }

@@ -1,20 +1,18 @@
 import com.thoughtworks.binding.dom
+
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 import org.scalajs.dom.document
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
 
-import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+@JSExportTopLevel("ProgressSpec")
+object ProgressSpec {
 
-@JSExportTopLevel("RateSpec")
-object RateSpec {
   @dom
   def body = {
     <div>
       <hr></hr>
-      <Rate count={1}></Rate>
-      <hr></hr>
-      <Rate count={4} value={3} star={true}></Rate>
+      <Progress value={5} total={100}></Progress>
       <hr></hr>
     </div>
   }

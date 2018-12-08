@@ -8,7 +8,7 @@ import org.scalajs.dom.document
 @JSExportTopLevel("IconSpec")
 object IconSpec {
   @dom
-  def icon = {
+  def body = {
     <div>
       <hr></hr>
       <div>
@@ -40,6 +40,6 @@ object IconSpec {
 
   @JSExport
   def main(): Unit = {
-    dom.render(document.body, icon)
+    dom.render(document.body, body)
   }
 }
