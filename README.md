@@ -9,7 +9,10 @@ sbt "project doc" "fastOptJS"
 pushd doc; python -m SimpleHTTPServer; popd
 ```
 
-## Example(Deprecated)
+## Roadmap
++ **v0.1**: Implement and polish the components without innerText or innerHTML
+
+## Example(Deprecated: Should be moved into doc)
 ``` scala
 import com.thoughtworks.binding.{Binding, dom}
 
