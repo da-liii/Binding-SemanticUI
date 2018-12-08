@@ -44,7 +44,9 @@ object Main {
   def rating = {
     <div>
       <hr></hr>
-        <Rate count={1}></Rate>
+      <Rate count={1}></Rate>
+      <hr></hr>
+      <Rate count={4} value={3} star={true}></Rate>
       <hr></hr>
     </div>
   }
