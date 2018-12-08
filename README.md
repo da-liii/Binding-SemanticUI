@@ -1,13 +1,15 @@
 # Binding-SemanticUI [![Scala.js](http://scala-js.org/assets/badges/scalajs-0.6.15.svg)](http://scala-js.org)[![Latest](https://index.scala-lang.org/sadhen/binding-semanticui/semantic-ui/latest.svg)](https://index.scala-lang.org/sadhen/binding-semanticui)
 
-Available Components:
+## Developers' Guide
 
-| Component | Status |
-|-----------|--------|
-| Pagination | basic |
-| Table      | basic |
+```
+sbt "project doc" "fastOptJS"
 
-## Example
+// Serve the directory for developing
+pushd doc; python -m SimpleHTTPServer; popd
+```
+
+## Example(Deprecated)
 ``` scala
 import com.thoughtworks.binding.{Binding, dom}
 
