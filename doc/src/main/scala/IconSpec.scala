@@ -1,14 +1,14 @@
+import scala.scalajs.js.annotation.JSExportTopLevel
 import com.thoughtworks.binding.dom
 
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
-import org.scalajs.dom.document
 
 @JSExportTopLevel("IconSpec")
-object IconSpec {
+object IconSpec extends MainEntry {
+
   @dom
-  def body = {
+  override def body = {
     <div>
       <hr></hr>
       <div>
@@ -36,10 +36,5 @@ object IconSpec {
       <Icon type="users" color="black" />
       <hr></hr>
     </div>
-  }
-
-  @JSExport
-  def main(): Unit = {
-    dom.render(document.body, body)
   }
 }

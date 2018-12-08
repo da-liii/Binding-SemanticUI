@@ -1,15 +1,15 @@
-import com.thoughtworks.binding.dom
+import scala.scalajs.js.annotation.JSExportTopLevel
 import org.scalajs.dom.document
+import com.thoughtworks.binding.dom
+
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
 
-import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
-
 @JSExportTopLevel("RateSpec")
-object RateSpec {
+object RateSpec extends MainEntry {
+
   @dom
-  def body = {
+  override def body = {
     <div>
       <hr></hr>
       <Rate count={1}></Rate>
@@ -17,10 +17,5 @@ object RateSpec {
       <Rate count={4} value={3} star={true}></Rate>
       <hr></hr>
     </div>
-  }
-
-  @JSExport
-  def main(): Unit = {
-    dom.render(document.body, body)
   }
 }
