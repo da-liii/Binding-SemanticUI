@@ -3,10 +3,10 @@ package com.sadhen.binding.component.dataentry
 import com.thoughtworks.binding.{Binding, dom}
 import com.thoughtworks.binding.Binding.{Constants, Var}
 import org.scalajs.dom.raw.Node
-
 import com.sadhen.binding.component.ComponentBuilder
 import com.sadhen.binding.component.tag.Icon
 import com.sadhen.binding.component.autoVar
+import com.sadhen.binding.util.BindingRange
 
 
 class RateBuilder extends ComponentBuilder {
@@ -27,10 +27,6 @@ class RateBuilder extends ComponentBuilder {
     if (heart) "heart"
     else ""
 
-  private def fActive(active: Boolean): String =
-    if (active) "active"
-    else ""
-
   def render = this
 
   @dom
@@ -39,12 +35,12 @@ class RateBuilder extends ComponentBuilder {
          data:data-max-rating={ count.bind.toString }
          data:data-rating={ value.bind.toString }>
       {
-        Constants((0 until count.bind): _*).map( ind =>
+        BindingRange(count.bind).map { ind =>
+          // TODO: The dummy div pair should be removed later
           <div>
             <Icon active={ind < value.bind}></Icon>
           </div>
-
-        )
+        }
       }
     </div>
   }
