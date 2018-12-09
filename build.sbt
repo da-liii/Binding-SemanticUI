@@ -20,7 +20,7 @@ lazy val commonSettings = Seq(
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },
   pomExtra := (
-    <url>http://jsuereth.com/scala-ar://github.com/sadhen/Binding-SemanticUI</url>
+    <url>http://github.com/sadhen/Binding-SemanticUI</url>
     <licenses>
       <license>
         <name>Apache 2</name>
