@@ -43,7 +43,7 @@ case class IconBuilder() extends ComponentBuilder {
         fLoading(loading.bind),
         fDisabled(disabled.bind),
         constAttr
-      ).mkString(" ")
+      ).filter(_.nonEmpty).mkString(" ")
     }>
     </i>
   }

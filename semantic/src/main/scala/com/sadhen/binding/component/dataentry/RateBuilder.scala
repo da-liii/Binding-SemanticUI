@@ -31,7 +31,7 @@ case class RateBuilder() extends ComponentBuilder {
 
   @dom
   override def build: Binding[Node] = {
-    <div class={ List(constAttrStart, fStar(star.bind), fHeart(heart.bind), constAttrEnd).mkString(" ") }
+    <div class={ List(constAttrStart, fStar(star.bind), fHeart(heart.bind), constAttrEnd).filter(_.nonEmpty).mkString(" ") }
          data:data-max-rating={ count.bind.toString }
          data:data-rating={ value.bind.toString }>
       {
