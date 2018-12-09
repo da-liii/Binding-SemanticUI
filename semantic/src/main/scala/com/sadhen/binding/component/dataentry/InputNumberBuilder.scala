@@ -6,7 +6,7 @@ import com.thoughtworks.binding.dom
 /**
   * Created by rendong on 17/1/23.
   */
-case class InputNumberBuilder() extends ComponentBuilder {
+class InputNumberBuilder extends ComponentBuilder {
   @dom
   override def build = {
     <div>

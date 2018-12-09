@@ -8,44 +8,45 @@ import com.sadhen.binding.component.general.{ButtonBuilder, IconBuilder}
 import com.thoughtworks.binding.dom
 
 /**
-  * Created by rendong on 17/1/23.
+  * Ref:
+  *   - [[https://github.com/ThoughtWorksInc/Binding.scala/issues/4]]
   */
 package object tag {
   // General
   implicit final class Icon(x: dom.Runtime.TagsAndTags2.type) {
-    def Icon = IconBuilder()
+    def Icon = new IconBuilder
   }
 
   implicit final class Button(x: dom.Runtime.TagsAndTags2.type) {
-    def Button = ButtonBuilder()
+    def Button = new ButtonBuilder
   }
 
   // Navigation
   implicit final class Pagination(x: dom.Runtime.TagsAndTags2.type) {
-    def Pagination = PaginationBuilder()
+    def Pagination = new PaginationBuilder
   }
 
   // Data Entry
   implicit final class Rate(x: dom.Runtime.TagsAndTags2.type) {
-    def Rate = RateBuilder()
+    def Rate = new RateBuilder
   }
 
   implicit final class AutoComplete(x: dom.Runtime.TagsAndTags2.type) {
-    def AutoComplete = AutoCompleteBuilder()
+    def AutoComplete = new AutoCompleteBuilder
   }
 
   implicit final class InputNumber(x: dom.Runtime.TagsAndTags2.type) {
-    def InputNumber = InputNumberBuilder()
+    def InputNumber = new InputNumberBuilder
   }
 
   // Data Display
   implicit final class Table(x: dom.Runtime.TagsAndTags2.type) {
-    def Table = TableBuilder()
+    def Table = new TableBuilder
   }
 
   // Feedback
   implicit final class Progress(x: dom.Runtime.TagsAndTags2.type) {
-    def Progress = ProgressBuilder()
+    def Progress = new ProgressBuilder
   }
 
 }

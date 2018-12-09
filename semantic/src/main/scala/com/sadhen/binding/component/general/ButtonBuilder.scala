@@ -4,7 +4,7 @@ import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.raw.Node
 
-case class ButtonBuilder() extends ComponentBuilder {
+class ButtonBuilder extends ComponentBuilder {
 
   def render = this
 

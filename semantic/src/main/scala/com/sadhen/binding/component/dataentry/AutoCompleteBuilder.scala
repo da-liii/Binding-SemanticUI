@@ -9,7 +9,7 @@ import org.scalajs.dom.html._
 /**
   * Created by rendong on 17/1/23.
   */
-case class AutoCompleteBuilder() extends ComponentBuilder {
+class AutoCompleteBuilder extends ComponentBuilder {
   var dataSource: Var[Seq[String]] = Var(Seq.empty)
   var placeholder: Var[String] = Var("")
 

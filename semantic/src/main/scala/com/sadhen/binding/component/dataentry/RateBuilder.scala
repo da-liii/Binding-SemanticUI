@@ -1,11 +1,15 @@
 package com.sadhen.binding.component.dataentry
 
-import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.{Binding, dom}
 import com.thoughtworks.binding.Binding.{Constants, Var}
 import org.scalajs.dom.raw.Node
 
-case class RateBuilder() extends ComponentBuilder {
+import com.sadhen.binding.component.ComponentBuilder
+import com.sadhen.binding.component.tag.Icon
+import com.sadhen.binding.component.autoVar
+
+
+class RateBuilder extends ComponentBuilder {
   var count: Var[Int] = Var(5)
   var value: Var[Int] = Var(0)
   var size: Var[String] = Var("")
@@ -15,15 +19,15 @@ case class RateBuilder() extends ComponentBuilder {
   val constAttrStart = "ui"
   val constAttrEnd = "rating"
 
-  def fStar(star: Boolean): String =
+  private def fStar(star: Boolean): String =
     if (star) "star"
     else ""
 
-  def fHeart(heart: Boolean): String =
+  private def fHeart(heart: Boolean): String =
     if (heart) "heart"
     else ""
 
-  def fActive(active: Boolean): String =
+  private def fActive(active: Boolean): String =
     if (active) "active"
     else ""
 
@@ -35,9 +39,12 @@ case class RateBuilder() extends ComponentBuilder {
          data:data-max-rating={ count.bind.toString }
          data:data-rating={ value.bind.toString }>
       {
-        Constants((0 until count.bind): _*) map { ind =>
-          <i class={ List("icon", fActive(ind < value.bind)).mkString(" ") }></i>
-        }
+        Constants((0 until count.bind): _*).map( ind =>
+          <div>
+            <Icon active={ind < value.bind}></Icon>
+          </div>
+
+        )
       }
     </div>
   }

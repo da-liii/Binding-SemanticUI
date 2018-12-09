@@ -8,7 +8,7 @@ import org.scalajs.dom.raw.Event
 /**
   * Created by rendong on 17/1/23.
   */
-case class PaginationBuilder() extends ComponentBuilder {
+class PaginationBuilder extends ComponentBuilder {
   var defaultCurrent: Var[Int] = Var(1)
   var total: Var[Int] = Var(1)
   var simple: Var[Boolean] = Var(false)

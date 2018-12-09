@@ -19,7 +19,7 @@ trait Column {
     <td>{ record.selectDynamic(dataIndex).toString }</td>
 }
 
-case class TableBuilder() extends ComponentBuilder {
+class TableBuilder extends ComponentBuilder {
   var dataSource: Var[Array[js.Dynamic]] = Var(Array.empty)
   var columns: Var[Array[Column]] = Var(Array.empty)
 
