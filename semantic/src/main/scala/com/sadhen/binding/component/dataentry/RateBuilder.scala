@@ -1,20 +1,29 @@
 package com.sadhen.binding.component.dataentry
 
+import org.scalajs.dom.raw.{Event, Node}
 import com.thoughtworks.binding.{Binding, dom}
-import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
-import org.scalajs.dom.raw.Node
+import com.thoughtworks.binding.Binding.Var
 import com.sadhen.binding.component.ComponentBuilder
 import com.sadhen.binding.component.tag.Icon
 import com.sadhen.binding.component.autoVar
 import com.sadhen.binding.util.BindingRange
 
-
+/**
+  * Ref:
+  *   - [[https://semantic-ui.com/modules/rating.html]]
+  *   - [[https://ant.design/components/rate/]]
+  */
 class RateBuilder extends ComponentBuilder[RateBuilder] {
+  /** star count */
   var count: Var[Int] = Var(5)
+  /** current value */
   var value: Var[Int] = Var(0)
   var size: Var[String] = Var("")
+  /** use the star icon */
   var star: Var[Boolean] = Var(false)
+  /** use the heart icon */
   var heart: Var[Boolean] = Var(false)
+  var onChange: Var[Int => Unit] = Var(v => {})
 
   val constAttrStart = "ui"
   val constAttrEnd = "rating"
@@ -31,7 +40,13 @@ class RateBuilder extends ComponentBuilder[RateBuilder] {
   private def iconGen(ind: Int): Binding[Node] = {
     // TODO: The dummy div pair should be removed later
     <div>
-      <Icon active={ind < value.bind}></Icon>
+      <Icon active={ ind < value.bind }
+            onclick={ event: Event =>
+              // change the current value to the clicked one
+              value.value = ind
+              // invoke the customized onChange event
+              onChange.value(ind)
+            } />
     </div>
   }
 

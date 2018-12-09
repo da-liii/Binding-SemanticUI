@@ -1,9 +1,11 @@
 package com.sadhen.binding.component.general
 
-import com.sadhen.binding.component.ComponentBuilder
-import com.thoughtworks.binding.{Binding, dom}
+import org.scalajs.dom.raw.{Event, HTMLElement, Node}
+import com.thoughtworks.binding.Binding
 import com.thoughtworks.binding.Binding.Var
-import org.scalajs.dom.raw.{HTMLElement, Node}
+
+import com.sadhen.binding.component.ComponentBuilder
+import com.sadhen.binding.magic.ant
 
 /**
   * Ref:
@@ -21,6 +23,7 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
   var loading: Var[Boolean] = Var(false)
   /** State of an icon, used together with Rate */
   var active: Var[Boolean] = Var(false)
+  var onclick: Var[Event => Unit] = Var { event => }
 
   private val constAttr = "icon"
 
@@ -39,9 +42,10 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
     else ""
   }
 
-  @dom
+  @ant
   override def build: Binding[Node] = {
-    <i class={
+    <i
+    class={
       List(
         color.bind,
         `type`.bind,
@@ -50,7 +54,8 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
         fDisabled(disabled.bind),
         constAttr
       ).filter(_.nonEmpty).mkString(" ")
-    }>
-    </i>
+    }
+    onclick={ onclick.bind }
+    />
   }
 }
