@@ -42,16 +42,34 @@ lazy val commonSettings = Seq(
     </developers>)
 )
 
-lazy val librarySettings = Seq(
-  name := "semantic-ui",
-  libraryDependencies ++= Seq(
-    "io.udash" %%% "udash-jquery" % "3.0.0",
-    "com.thoughtworks.binding" %%% "dom" % "11.3.0"
-  )
-)
+lazy val ant = (project in file("ant"))
+  .settings(commonSettings)
+  .settings(
+    name := "ant",
+    libraryDependencies ++= Seq(
+      "com.thoughtworks.binding" %%% "binding" % "11.3.0",
+      "com.thoughtworks.extractor" %% "extractor" % "1.2.0",
+      "com.lihaoyi" %%% "scalatags" % "0.6.7",
+      "org.scala-js" %%% "scalajs-dom" % "0.9.5",
+      "org.typelevel" %% "macro-compat" % "1.1.1",
+      "org.apache.commons" % "commons-lang3" % "3.8.1",
+      "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided
+    ),
+    scalacOptions += "-Xexperimental",
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+  ).enablePlugins(ScalaJSPlugin)
 
 lazy val semantic = (project in file("semantic"))
-  .settings(commonSettings, librarySettings)
+  .settings(commonSettings)
+  .settings(
+    name := "semantic",
+    libraryDependencies ++= Seq(
+      "io.udash" %%% "udash-jquery" % "3.0.0",
+      "com.thoughtworks.binding" %%% "dom" % "11.3.0",
+      "com.sadhen.binding" %%% "ant" % "0.0.2-SNAPSHOT"
+    )
+  )
+  .dependsOn(ant)
   .enablePlugins(ScalaJSPlugin)
 
 lazy val doc = (project in file("doc"))
@@ -65,3 +83,9 @@ lazy val doc = (project in file("doc"))
   )
   .dependsOn(semantic)
   .enablePlugins(ScalaJSPlugin)
+
+lazy val root = (project in file("."))
+  .aggregate(ant, semantic, doc)
+  .settings(
+    name := "root"
+  )

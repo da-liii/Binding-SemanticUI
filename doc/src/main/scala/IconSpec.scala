@@ -1,5 +1,5 @@
 import scala.scalajs.js.annotation.JSExportTopLevel
-import com.thoughtworks.binding.dom
+import com.sadhen.binding.magic.ant
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
 import com.thoughtworks.binding.Binding.Var
@@ -9,7 +9,7 @@ import org.scalajs.dom.raw.Event
 object IconSpec extends MainEntry {
   val disabled: Var[Boolean] = Var(true)
 
-  @dom
+  @ant
   override def body = {
     <div>
       <hr></hr>

@@ -3,7 +3,6 @@ package com.sadhen.binding.component.general
 import org.scalajs.dom.raw.{Event, HTMLElement, Node}
 import com.thoughtworks.binding.Binding
 import com.thoughtworks.binding.Binding.Var
-
 import com.sadhen.binding.component.ComponentBuilder
 import com.sadhen.binding.magic.ant
 
@@ -44,8 +43,7 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
 
   @ant
   override def build: Binding[Node] = {
-    <i
-    class={
+    <i class={
       List(
         color.bind,
         `type`.bind,

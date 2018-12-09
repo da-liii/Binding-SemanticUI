@@ -1,12 +1,12 @@
 import scala.scalajs.js.annotation.JSExportTopLevel
-import com.thoughtworks.binding.dom
+import com.sadhen.binding.magic.ant
 
 import com.sadhen.binding.component.tag._
 
 @JSExportTopLevel("ButtonSpec")
 object ButtonSpec extends MainEntry {
 
-  @dom
+  @ant
   override def body = {
     <div>
       <hr></hr>

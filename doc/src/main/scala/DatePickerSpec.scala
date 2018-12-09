@@ -1,12 +1,12 @@
 import scala.scalajs.js.annotation.JSExportTopLevel
-import com.thoughtworks.binding.dom
+import com.sadhen.binding.magic.ant
 
 import com.sadhen.binding.component.tag._
 
 @JSExportTopLevel("DatePickerSpec")
 object DatePickerSpec extends MainEntry {
 
-  @dom
+  @ant
   override def body = {
     <div>
       <hr></hr>

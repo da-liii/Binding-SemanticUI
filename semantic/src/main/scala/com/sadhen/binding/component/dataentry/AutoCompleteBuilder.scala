@@ -1,10 +1,10 @@
 package com.sadhen.binding.component.dataentry
 
-import com.sadhen.binding.component.ComponentBuilder
-import com.thoughtworks.binding.Binding.{Var, Vars}
-import com.thoughtworks.binding.dom
 import org.scalajs.dom.raw.Event
-import org.scalajs.dom.html._
+import com.thoughtworks.binding.Binding.{Var, Vars}
+
+import com.sadhen.binding.component.ComponentBuilder
+import com.sadhen.binding.magic.ant
 
 /**
   * Created by rendong on 17/1/23.
@@ -15,14 +15,14 @@ class AutoCompleteBuilder extends ComponentBuilder[AutoCompleteBuilder] {
 
   val filter: Var[String] = Var("")
 
-  @dom
+  @ant
   override def build = {
     <div class="ui search">
       <div class="ui input">
         <input id="input"
                type="text"
                oninput={ event: Event =>
-                 filter := `input`.value
+                 // filter := `input`.value
                }
                placeholder={ placeholder.bind } />
       </div>

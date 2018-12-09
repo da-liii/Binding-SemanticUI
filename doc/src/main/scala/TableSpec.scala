@@ -2,10 +2,12 @@ import com.thoughtworks.binding.{Binding, dom}
 
 import scala.scalajs.js
 import org.scalajs.dom.document
+import org.scalajs.dom.raw.Node
+
 import com.sadhen.binding.component.tag.Table
 import com.sadhen.binding.component.datadisplay.Column
 import com.sadhen.binding.component._
-import org.scalajs.dom.raw.Node
+import com.sadhen.binding.magic.ant
 
 import scala.scalajs.js.annotation.JSExportTopLevel
 
@@ -39,14 +41,14 @@ object TableSpec extends MainEntry {
     new Column {
       val title = "Age"
       val dataIndex = "age"
-      @dom
+      @ant
       override def render(record: js.Dynamic): Binding[Node] = {
         <td>{ record.selectDynamic(dataIndex).toString + " years old" }</td>
       }
     }
   )
 
-  @dom
+  @ant
   def body = {
     // Simply assign the dataSource and columns, you would get a Table with
     // the simplest Pagination

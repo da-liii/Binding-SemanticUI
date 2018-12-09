@@ -2,7 +2,7 @@ package com.sadhen.binding.component.navigation
 
 import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.Binding.Var
-import com.thoughtworks.binding.dom
+import com.sadhen.binding.magic.ant
 import org.scalajs.dom.raw.Event
 
 /**
@@ -13,7 +13,7 @@ class PaginationBuilder extends ComponentBuilder[PaginationBuilder] {
   var total: Var[Int] = Var(1)
   var simple: Var[Boolean] = Var(false)
 
-  @dom
+  @ant
   override def build = {
     <div>
       <button

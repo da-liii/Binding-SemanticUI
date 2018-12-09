@@ -1,12 +1,13 @@
 package com.sadhen.binding.component.datadisplay
 
-import com.sadhen.binding.component._
-import com.thoughtworks.binding.Binding.{Var, Vars}
-import com.thoughtworks.binding.{Binding, dom}
-import org.scalajs.dom.raw.{Event, Node}
-
 import scala.scalajs.js
 
+import com.thoughtworks.binding.Binding.{Var, Vars}
+import com.thoughtworks.binding.Binding
+import org.scalajs.dom.raw.{Event, Node}
+
+import com.sadhen.binding.component._
+import com.sadhen.binding.magic.ant
 
 /**
   * Created by rendong on 17/1/25.
@@ -14,7 +15,7 @@ import scala.scalajs.js
 trait Column {
   val title: String
   val dataIndex: String
-  @dom
+  @ant
   def render(record: js.Dynamic): Binding[Node] =
     <td>{ record.selectDynamic(dataIndex).toString }</td>
 }
@@ -23,7 +24,7 @@ class TableBuilder extends ComponentBuilder[TableBuilder] {
   var dataSource: Var[Array[js.Dynamic]] = Var(Array.empty)
   var columns: Var[Array[Column]] = Var(Array.empty)
 
-  @dom
+  @ant
   override def build = {
     val pageSize = 10
     val defaultCurrent = Var(1)

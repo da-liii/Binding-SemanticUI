@@ -48,8 +48,6 @@ import scala.reflect.NameTransformer
   * @author 杨博 (Yang Bo) &lt;pop.atry@gmail.com&gt;
   */
 @compileTimeOnly("enable macro paradise to expand macro annotations")
-// TODO: @dom will be deprecated once @html is implemented
-// @deprecated(message = "Use `@html` instead", since = "11.0.0")
 class ant extends StaticAnnotation {
   def macroTransform(annottees: Any*): Any = macro ant.Macros.macroTransform
 }
@@ -57,8 +55,6 @@ class ant extends StaticAnnotation {
 /**
   * @author 杨博 (Yang Bo) &lt;pop.atry@gmail.com&gt;
   */
-// TODO: @dom will be deprecated once @html is implemented
-// @deprecated(message = "Use `@html` instead", since = "11.0.0")
 object ant {
 
   sealed trait LowPriorityRuntime {
@@ -77,7 +73,7 @@ object ant {
   }
 
   /**
-    * Internal helpers for `@dom` annotation
+    * Internal helpers for `@ant` annotation
     *
     * @note Do not use methods and classes in this object.
     */
@@ -202,7 +198,7 @@ object ant {
   }
 
   /**
-    * This object contains implicit views imported automatically for @dom methods.
+    * This object contains implicit views imported automatically for @ant methods.
     */
   object AutoImports {
 
@@ -503,7 +499,7 @@ object ant {
             case Seq(child) =>
               val (valDefs, transformedChild) = transformXml(child)
               valDefs -> atPos(child.pos) {
-                q"""_root_.com.thoughtworks.binding.dom.Runtime.domBindingSeq($transformedChild)"""
+                q"""_root_.com.sadhen.binding.magic.ant.Runtime.domBindingSeq($transformedChild)"""
               }
             case _ =>
               val transformedPairs = (for {
@@ -513,7 +509,7 @@ object ant {
                 valDefs -> atPos(child.pos) {
                   q"""
                     _root_.com.thoughtworks.binding.Binding.apply {
-                      _root_.com.thoughtworks.binding.dom.Runtime.domBindingSeq($transformedChild)
+                      _root_.com.sadhen.binding.magic.ant.Runtime.domBindingSeq($transformedChild)
                     }
                   """
                 }
@@ -560,7 +556,7 @@ object ant {
                         _root_.com.thoughtworks.binding.Binding.apply[_root_.scala.Unit]({
                           val $newValueName = ${transform(value)}
                           @_root_.scala.inline def $assignName() = {
-                            if (_root_.com.thoughtworks.binding.dom.Runtime.notEqual($attributeAccess, $newValueName)) {
+                            if (_root_.com.sadhen.binding.magic.ant.Runtime.notEqual($attributeAccess, $newValueName)) {
                               $attributeAccess = $newValueName
                             }
                           }
@@ -582,7 +578,7 @@ object ant {
                     _root_.com.thoughtworks.binding.Binding,
                     _root_.scala.Unit
                   ](
-                    _root_.com.thoughtworks.binding.dom.Runtime.mount(
+                    _root_.com.sadhen.binding.magic.ant.Runtime.mount(
                       $elementName,
                       $transformedBuffer
                     )
@@ -591,7 +587,7 @@ object ant {
                 })
             }
 
-            val tagAccess = propertyAccess(tag, q"_root_.com.thoughtworks.binding.dom.Runtime.TagsAndTags2")
+            val tagAccess = propertyAccess(tag, q"_root_.com.sadhen.binding.magic.ant.Runtime.TagsAndTags2")
 
             val elementDef = q"val $elementName = $tagAccess.render"
             idOption match {
@@ -674,7 +670,7 @@ object ant {
 
       def autoImportAndTransform(body: Tree) = {
         q"""_root_.com.thoughtworks.binding.Binding.apply {
-          import _root_.com.thoughtworks.binding.dom.AutoImports.{
+          import _root_.com.sadhen.binding.magic.ant.AutoImports.{
             != => _,
             ## => _,
             == => _,
