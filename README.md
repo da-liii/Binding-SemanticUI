@@ -11,3 +11,8 @@ pushd doc; python -m SimpleHTTPServer; popd
 
 ## Roadmap
 + **v0.1**: Implement and polish the components without innerText or innerHTML
+
+## Credits
++ http://semantic-ui.com
++ http://ant.design
++ https://github.com/ThoughtWorksInc/Binding.scala
