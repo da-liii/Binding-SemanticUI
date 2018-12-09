@@ -1,9 +1,11 @@
 package com.sadhen.binding.component.general
 
-import com.sadhen.binding.component.ComponentBuilder
-import com.thoughtworks.binding.{Binding, dom}
-import com.thoughtworks.binding.Binding.Var
 import org.scalajs.dom.raw.{Event, HTMLElement, Node}
+import com.thoughtworks.binding.Binding
+import com.thoughtworks.binding.Binding.Var
+
+import com.sadhen.binding.component.ComponentBuilder
+import com.sadhen.binding.magic.ant
 
 /**
   * Ref:
@@ -40,7 +42,7 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
     else ""
   }
 
-  @dom
+  @ant
   override def build: Binding[Node] = {
     <i
     class={

@@ -12,7 +12,7 @@ object RateSpec extends MainEntry {
   override def body = {
     <div>
       <hr></hr>
-      <Rate count={1}></Rate>
+      <Rate></Rate>
       <hr></hr>
       <Rate count={4} value={3} star={true}></Rate>
       <hr></hr>
