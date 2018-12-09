@@ -19,11 +19,9 @@ trait Column {
     <td>{ record.selectDynamic(dataIndex).toString }</td>
 }
 
-class TableBuilder extends ComponentBuilder {
+class TableBuilder extends ComponentBuilder[TableBuilder] {
   var dataSource: Var[Array[js.Dynamic]] = Var(Array.empty)
   var columns: Var[Array[Column]] = Var(Array.empty)
-
-  def render = this
 
   @dom
   override def build = {

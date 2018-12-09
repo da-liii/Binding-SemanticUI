@@ -12,7 +12,7 @@ import org.scalajs.dom.raw.Node
 package object component {
   implicit def autoVar[A](a: A): Var[A] = Var(a)
 
-  implicit def toHtml(x: ComponentBuilder): BindingSeq[Node] = {
+  implicit def toHtml[T](x: ComponentBuilder[T]): BindingSeq[Node] = {
     Constants(x.build).mapBinding(identity)
   }
 }

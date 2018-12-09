@@ -6,6 +6,8 @@ import org.scalajs.dom.raw.Node
 /**
   * Created by rendong on 17/1/23.
   */
-trait ComponentBuilder {
+trait ComponentBuilder[T] { self: T =>
   def build: Binding[Node]
+
+  def render: T = self
 }

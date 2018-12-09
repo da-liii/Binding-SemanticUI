@@ -4,9 +4,7 @@ import com.sadhen.binding.component.ComponentBuilder
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.raw.Node
 
-class ButtonBuilder extends ComponentBuilder {
-
-  def render = this
+class ButtonBuilder extends ComponentBuilder[ButtonBuilder] {
 
   val constAttrStart = "ui"
   val constAttrEnd = "button"

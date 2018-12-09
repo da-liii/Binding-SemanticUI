@@ -9,11 +9,9 @@ import org.scalajs.dom.html._
 /**
   * Created by rendong on 17/1/23.
   */
-class AutoCompleteBuilder extends ComponentBuilder {
+class AutoCompleteBuilder extends ComponentBuilder[AutoCompleteBuilder] {
   var dataSource: Var[Seq[String]] = Var(Seq.empty)
   var placeholder: Var[String] = Var("")
-
-  def render = this
 
   val filter: Var[String] = Var("")
 

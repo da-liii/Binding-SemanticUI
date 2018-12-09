@@ -10,7 +10,7 @@ import org.scalajs.dom.raw.{HTMLElement, Node}
   *   - [[https://semantic-ui.com/elements/icon.html]]
   *   - [[https://ant.design/components/icon/]]
   */
-class IconBuilder extends ComponentBuilder {
+class IconBuilder extends ComponentBuilder[IconBuilder] {
   /** Type(name) of an icon, which determines the shape of an icon */
   var `type`: Var[String] = Var("")
   /** Color of an icon */
@@ -23,8 +23,6 @@ class IconBuilder extends ComponentBuilder {
   var active: Var[Boolean] = Var(false)
 
   private val constAttr = "icon"
-
-  def render = this
 
   private def fDisabled(disabled: Boolean): String = {
     if (disabled) "disabled"

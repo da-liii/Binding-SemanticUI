@@ -9,7 +9,7 @@ import com.sadhen.binding.component.autoVar
 import com.sadhen.binding.util.BindingRange
 
 
-class RateBuilder extends ComponentBuilder {
+class RateBuilder extends ComponentBuilder[RateBuilder] {
   var count: Var[Int] = Var(5)
   var value: Var[Int] = Var(0)
   var size: Var[String] = Var("")
@@ -26,8 +26,6 @@ class RateBuilder extends ComponentBuilder {
   private def fHeart(heart: Boolean): String =
     if (heart) "heart"
     else ""
-
-  def render = this
 
   @dom
   private def iconGen(ind: Int): Binding[Node] = {
