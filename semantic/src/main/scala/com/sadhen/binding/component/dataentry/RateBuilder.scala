@@ -1,19 +1,28 @@
 package com.sadhen.binding.component.dataentry
 
-import com.thoughtworks.binding.{Binding, dom}
-import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
 import org.scalajs.dom.raw.Node
+import com.thoughtworks.binding.{Binding, dom}
+import com.thoughtworks.binding.Binding.Var
+
 import com.sadhen.binding.component.ComponentBuilder
 import com.sadhen.binding.component.tag.Icon
 import com.sadhen.binding.component.autoVar
 import com.sadhen.binding.util.BindingRange
 
-
+/**
+  * Ref:
+  *   - [[https://semantic-ui.com/modules/rating.html]]
+  *   - [[https://ant.design/components/rate/]]
+  */
 class RateBuilder extends ComponentBuilder[RateBuilder] {
+  /** star count */
   var count: Var[Int] = Var(5)
+  /** current value */
   var value: Var[Int] = Var(0)
   var size: Var[String] = Var("")
+  /** use the star icon */
   var star: Var[Boolean] = Var(false)
+  /** use the heart icon */
   var heart: Var[Boolean] = Var(false)
 
   val constAttrStart = "ui"

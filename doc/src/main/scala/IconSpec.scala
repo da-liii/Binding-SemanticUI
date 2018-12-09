@@ -1,18 +1,20 @@
 import scala.scalajs.js.annotation.JSExportTopLevel
 import com.thoughtworks.binding.dom
-
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
+import com.thoughtworks.binding.Binding.Var
+import org.scalajs.dom.raw.Event
 
 @JSExportTopLevel("IconSpec")
 object IconSpec extends MainEntry {
+  val disabled: Var[Boolean] = Var(true)
 
   @dom
   override def body = {
     <div>
       <hr></hr>
       <div>
-        <Icon type="users" disabled={ true } />
+        <Icon type="users" disabled={ disabled } onclick={ event: Event => disabled.value = !disabled.value }/>
       </div>
       <hr></hr>
       <div>
