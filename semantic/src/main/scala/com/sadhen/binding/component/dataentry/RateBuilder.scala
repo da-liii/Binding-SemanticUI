@@ -1,7 +1,7 @@
 package com.sadhen.binding.component.dataentry
 
 import com.thoughtworks.binding.{Binding, dom}
-import com.thoughtworks.binding.Binding.{Constants, Var}
+import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
 import org.scalajs.dom.raw.Node
 import com.sadhen.binding.component.ComponentBuilder
 import com.sadhen.binding.component.tag.Icon
@@ -30,18 +30,19 @@ class RateBuilder extends ComponentBuilder {
   def render = this
 
   @dom
+  private def iconGen(ind: Int): Binding[Node] = {
+    // TODO: The dummy div pair should be removed later
+    <div>
+      <Icon active={ind < value.bind}></Icon>
+    </div>
+  }
+
+  @dom
   override def build: Binding[Node] = {
     <div class={ List(constAttrStart, fStar(star.bind), fHeart(heart.bind), constAttrEnd).filter(_.nonEmpty).mkString(" ") }
          data:data-max-rating={ count.bind.toString }
          data:data-rating={ value.bind.toString }>
-      {
-        BindingRange(count.bind).map { ind =>
-          // TODO: The dummy div pair should be removed later
-          <div>
-            <Icon active={ind < value.bind}></Icon>
-          </div>
-        }
-      }
+      { BindingRange(count.bind).map(iconGen(_).bind) }
     </div>
   }
 }
