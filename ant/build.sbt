@@ -1,6 +1,5 @@
 enablePlugins(ScalaJSPlugin)
 
-name := "ant"
 scalacOptions += "-Xexperimental"
 libraryDependencies += "com.thoughtworks.binding" %%% "binding" % "11.6.0"
 libraryDependencies += "com.thoughtworks.binding" %% "xmlextractor" % "11.6.0"

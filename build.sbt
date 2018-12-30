@@ -16,7 +16,6 @@ lazy val semantic = (project in file("semantic"))
 lazy val doc = (project in file("doc"))
   .settings(commonSettings)
   .dependsOn(semantic)
-  .enablePlugins(ScalaJSPlugin)
 
 lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
