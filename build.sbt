@@ -1,13 +1,31 @@
 import sbt.Keys._
 
-lazy val jQueryV = "3.3.1"
-lazy val semanticV = "2.4.1"
+lazy val root = (project in file("."))
+  .aggregate(ant, semantic, doc)
+  .settings(
+    name := "Binding-SemanticUI"
+  )
+
+lazy val ant = (project in file("ant"))
+  .settings(commonSettings)
+
+lazy val semantic = (project in file("semantic"))
+  .settings(commonSettings)
+  .dependsOn(ant)
+
+lazy val doc = (project in file("doc"))
+  .settings(commonSettings)
+  .dependsOn(semantic)
+  .enablePlugins(ScalaJSPlugin)
 
 lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
   version := "0.0.2-SNAPSHOT",
   scalaVersion := "2.12.8",
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full),
+)
+
+lazy val publishSettings = Seq(
   publishMavenStyle := true,
   isSnapshot := version.value.endsWith("SNAPSHOT"),
   publishTo := {
@@ -24,9 +42,9 @@ lazy val commonSettings = Seq(
     <licenses>
       <license>
         <name>Apache 2</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-          <distribution>repo</distribution>
-          <comments>A business-friendly OSS license</comments>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        <distribution>repo</distribution>
+        <comments>A business-friendly OSS license</comments>
       </license>
     </licenses>
     <scm>
@@ -39,53 +57,6 @@ lazy val commonSettings = Seq(
         <name>Darcy Shen</name>
         <url>http://sadhen.com</url>
       </developer>
-    </developers>)
+    </developers>
+  )
 )
-
-lazy val ant = (project in file("ant"))
-  .settings(commonSettings)
-  .settings(
-    name := "ant",
-    libraryDependencies ++= Seq(
-      "com.thoughtworks.binding" %%% "binding" % "11.6.0",
-      "com.thoughtworks.binding" %% "xmlextractor" % "11.6.0",
-      "com.lihaoyi" %%% "scalatags" % "0.6.7",
-      "org.scala-js" %%% "scalajs-dom" % "0.9.5",
-      "org.typelevel" %% "macro-compat" % "1.1.1",
-      "org.apache.commons" % "commons-lang3" % "3.8.1",
-      "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided
-    ),
-    scalacOptions += "-Xexperimental",
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-  ).enablePlugins(ScalaJSPlugin)
-
-lazy val semantic = (project in file("semantic"))
-  .settings(commonSettings)
-  .settings(
-    name := "semantic",
-    libraryDependencies ++= Seq(
-      "io.udash" %%% "udash-jquery" % "3.0.0",
-      "org.scala-lang.modules" %%% "scala-xml" % "1.1.0",
-      "com.sadhen.binding" %%% "ant" % "0.0.2-SNAPSHOT"
-    )
-  )
-  .dependsOn(ant)
-  .enablePlugins(ScalaJSPlugin)
-
-lazy val doc = (project in file("doc"))
-  .settings(
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-    skip in packageJSDependencies := false,
-    jsDependencies ++= Seq(
-      "org.webjars" % "jquery" % jQueryV / "jquery.js" minified "jquery.min.js",
-      "org.webjars" % "Semantic-UI" % semanticV / "semantic.js" minified "semantic.min.js" dependsOn "jquery.js"
-    )
-  )
-  .dependsOn(semantic)
-  .enablePlugins(ScalaJSPlugin)
-
-lazy val root = (project in file("."))
-  .aggregate(ant, semantic, doc)
-  .settings(
-    name := "Binding-SemanticUI"
-  )
