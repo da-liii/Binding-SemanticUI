@@ -40,12 +40,14 @@ class RateBuilder extends ComponentBuilder[RateBuilder] {
 
   @ant
   private def iconGen(ind: Int): Binding[Node] = {
+    val current = ind + 1
+    val active: Var[Boolean] = Var(current <= value.bind)
     // TODO: The dummy div pair should be removed later
     <div>
-      <Icon active={ ind < value.bind }
+      <Icon active={ active }
             onclick={ event: Event =>
               // change the current value to the clicked one
-              value.value = ind
+              value.value = current
               // invoke the customized onChange event
               onChange.value(ind)
             } />
