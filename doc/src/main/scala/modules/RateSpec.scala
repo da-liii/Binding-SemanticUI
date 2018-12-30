@@ -1,5 +1,4 @@
 import scala.scalajs.js.annotation.JSExportTopLevel
-
 import com.sadhen.binding.magic._
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar

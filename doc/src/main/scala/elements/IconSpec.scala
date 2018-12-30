@@ -1,9 +1,9 @@
+import org.scalajs.dom.raw.Event
 import scala.scalajs.js.annotation.JSExportTopLevel
+import com.thoughtworks.binding.Binding.Var
 import com.sadhen.binding.magic._
 import com.sadhen.binding.component.tag._
 import com.sadhen.binding.component.autoVar
-import com.thoughtworks.binding.Binding.Var
-import org.scalajs.dom.raw.Event
 
 @JSExportTopLevel("IconSpec")
 object IconSpec extends MainEntry {
