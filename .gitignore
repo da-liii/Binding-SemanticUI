@@ -77,3 +77,6 @@ fabric.properties
 
 .idea/
 project/project/
+
+*.js
+*.js.map
