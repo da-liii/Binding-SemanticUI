@@ -1,4 +1,4 @@
-import com.thoughtworks.binding.{Binding, dom}
+import com.thoughtworks.binding.Binding
 
 import scala.scalajs.js
 import org.scalajs.dom.document

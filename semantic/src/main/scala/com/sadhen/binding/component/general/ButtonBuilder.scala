@@ -2,7 +2,7 @@ package com.sadhen.binding.component.general
 
 import com.sadhen.binding.component.ComponentBuilder
 import com.sadhen.binding.magic.ant
-import com.thoughtworks.binding.{Binding, dom}
+import com.thoughtworks.binding.Binding
 import org.scalajs.dom.raw.Node
 
 class ButtonBuilder extends ComponentBuilder[ButtonBuilder] {

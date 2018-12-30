@@ -21,10 +21,10 @@ SOFTWARE.
 package com.sadhen.binding.magic
 
 import com.thoughtworks.binding.Binding.{BindingSeq, Constants, MultiMountPoint, SingleMountPoint, SingletonBindingSeq}
-import ant.Runtime.NodeSeqMountPoint
 import com.thoughtworks.Extractor._
 import com.thoughtworks.binding.Binding
-import com.sadhen.binding.magic.XmlExtractor.{PrefixedName, QName, UnprefixedName}
+import com.thoughtworks.binding.XmlExtractor
+import com.thoughtworks.binding.XmlExtractor._
 import com.thoughtworks.sde.core.Preprocessor
 import macrocompat.bundle
 import org.scalajs.dom.raw._

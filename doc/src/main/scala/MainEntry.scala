@@ -1,9 +1,9 @@
+import com.sadhen.binding.magic.ant
 import scala.scalajs.js.annotation.JSExport
 import org.scalajs.dom.document
 import org.scalajs.dom.raw.Node
-
 import com.thoughtworks.binding.Binding.BindingSeq
-import com.thoughtworks.binding.{Binding, dom}
+import com.thoughtworks.binding.Binding
 
 
 trait MainEntry {
@@ -11,6 +11,6 @@ trait MainEntry {
 
   @JSExport
   def main(): Unit = {
-    dom.render(document.body, body)
+    ant.render(document.body, body)
   }
 }

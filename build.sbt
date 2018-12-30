@@ -7,7 +7,7 @@ lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
   version := "0.0.2-SNAPSHOT",
   scalaVersion := "2.12.8",
-  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full),
   publishMavenStyle := true,
   isSnapshot := version.value.endsWith("SNAPSHOT"),
   publishTo := {
@@ -47,8 +47,8 @@ lazy val ant = (project in file("ant"))
   .settings(
     name := "ant",
     libraryDependencies ++= Seq(
-      "com.thoughtworks.binding" %%% "binding" % "11.3.0",
-      "com.thoughtworks.extractor" %% "extractor" % "1.2.0",
+      "com.thoughtworks.binding" %%% "binding" % "11.6.0",
+      "com.thoughtworks.binding" %% "xmlextractor" % "11.6.0",
       "com.lihaoyi" %%% "scalatags" % "0.6.7",
       "org.scala-js" %%% "scalajs-dom" % "0.9.5",
       "org.typelevel" %% "macro-compat" % "1.1.1",
@@ -65,7 +65,7 @@ lazy val semantic = (project in file("semantic"))
     name := "semantic",
     libraryDependencies ++= Seq(
       "io.udash" %%% "udash-jquery" % "3.0.0",
-      "com.thoughtworks.binding" %%% "dom" % "11.3.0",
+      "org.scala-lang.modules" %%% "scala-xml" % "1.1.0",
       "com.sadhen.binding" %%% "ant" % "0.0.2-SNAPSHOT"
     )
   )
@@ -87,5 +87,5 @@ lazy val doc = (project in file("doc"))
 lazy val root = (project in file("."))
   .aggregate(ant, semantic, doc)
   .settings(
-    name := "root"
+    name := "Binding-SemanticUI"
   )
