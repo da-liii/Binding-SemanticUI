@@ -54,7 +54,10 @@ class RateBuilder extends ComponentBuilder[RateBuilder] {
 
   @ant
   override def build: Binding[Node] = {
-    <div class={ List(constAttrStart, fStar(star.bind), fHeart(heart.bind), constAttrEnd).filter(_.nonEmpty).mkString(" ") }
+    <div class={
+         List(constAttrStart, fStar(star.bind), fHeart(heart.bind), size.bind, constAttrEnd)
+           .filter(_.nonEmpty).mkString(" ")
+         }
          data:data-max-rating={ count.bind.toString }
          data:data-rating={ value.bind.toString }>
       { BindingRange(count.bind).map(iconGen(_).bind) }
