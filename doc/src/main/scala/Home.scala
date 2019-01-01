@@ -22,7 +22,7 @@ object Home extends MainEntry {
               Binding Semantic
             </h1>
             <h2>Typed Components using Binding.scala and Semantic UI</h2>
-            <div class="ui huge primary button">Get Started  <a href="/introduction/start/"><i class="right arrow icon"></i></a></div>
+            <div class="ui huge primary button">Get Started  <a href="introduction/start/"><i class="right arrow icon"></i></a></div>
           </div>
         </div>
       </div>

@@ -19,17 +19,17 @@ object Start extends MainEntry {
         </thead>
         <tbody>
           <tr>
-            <td><a href="/elements/icon/">Icon</a></td>
+            <td><a href="../../elements/icon/">Icon</a></td>
             <td><Progress value={60} total={100}></Progress></td>
             <td>v0.1.0</td>
           </tr>
           <tr>
-            <td><a href="/modules/rate/">Rate</a></td>
+            <td><a href="../../modules/rate/">Rate</a></td>
             <td><Progress value={90} total={100}></Progress></td>
             <td>v0.1.0</td>
           </tr>
           <tr>
-            <td><a href="/modules/progress/">Progress</a></td>
+            <td><a href="../../modules/progress/">Progress</a></td>
             <td><Progress value={20} total={100}></Progress></td>
             <td>v0.1.0</td>
           </tr>
