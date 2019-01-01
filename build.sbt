@@ -1,5 +1,9 @@
 import sbt.Keys._
 
+transitiveClassifiers in Global := Seq(Artifact.SourceClassifier)
+
+scalaVersion in ThisBuild := "2.12.8"
+
 lazy val root = (project in file("."))
   .aggregate(ant, semantic, doc)
   .settings(
@@ -20,7 +24,6 @@ lazy val doc = (project in file("doc"))
 lazy val commonSettings = Seq(
   organization := "com.sadhen.binding",
   version := "0.0.2-SNAPSHOT",
-  scalaVersion := "2.12.8",
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full),
 )
 
