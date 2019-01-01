@@ -16,6 +16,8 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
   var `type`: Var[String] = Var("")
   /** Color of an icon */
   var color: Var[String] = Var("")
+  /** Size of an icon */
+  var size: Var[String] = Var("")
   /** State of an icon, enabled by default */
   var disabled: Var[Boolean] = Var(false)
   /** State of an icon, static(not loading) by default */
@@ -47,6 +49,7 @@ class IconBuilder extends ComponentBuilder[IconBuilder] {
       List(
         color.bind,
         `type`.bind,
+        size.bind,
         fActive(active.bind),
         fLoading(loading.bind),
         fDisabled(disabled.bind),

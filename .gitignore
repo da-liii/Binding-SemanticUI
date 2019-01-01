@@ -80,3 +80,5 @@ project/project/
 
 *.js
 *.js.map
+
+*.log
